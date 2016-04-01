@@ -63,7 +63,7 @@ var reportError = function (error) {
 }
 
 gulp.task('sass:dev', function () {
-  gulp.src(dirs.css + '/*.scss')
+  gulp.src(dirs.css + '/*.sass')
     .pipe(plugins.plumber({
       errorHandler: reportError
     }))
@@ -77,7 +77,7 @@ gulp.task('sass:dev', function () {
 });
 
 gulp.task('sass', function () {
-  gulp.src(dirs.css + '/*.scss')
+  gulp.src(dirs.css + '/*.sass')
     .pipe(plugins.sass({outputStyle: 'compressed'}).on('error', plugins.sass.logError))
     .pipe(plugins.autoprefixer(autoprefixerOptions))
     .pipe(gulp.dest(dirs.css))
@@ -125,7 +125,7 @@ gulp.task('gulpicon',
 
 gulp.task('watch', function () {
   plugins.livereload.listen();
-  gulp.watch(dirs.css + '/*.scss', ['sass:dev']);
+  gulp.watch(dirs.css + '/*.sass', ['sass:dev']);
   gulp.watch(jsdirs, ['js']);
   gulp.watch(dirs.icons + '/**/*.svg', ['gulpicon']);
 });
